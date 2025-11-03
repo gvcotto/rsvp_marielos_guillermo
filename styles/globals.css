@@ -1436,7 +1436,7 @@ body{ background:#ffffff; }
   font-family:'Libre Baskerville','Playfair Display',serif;
   color:#3d4a5a;
   line-height:1.7;
-  font-size:0.93rem;
+  font-size: clamp(0.8rem, 0.76rem + 0.3vw, 0.94rem);
   max-width:260px;
   text-align:center;
 }
