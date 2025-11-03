@@ -1,0 +1,24 @@
+<!-- public/img/bouquet.svg -->
+<svg width="220" height="220" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+  <g filter="url(#s)">
+    <circle cx="110" cy="110" r="12" fill="#8A6E3A" opacity="0"></circle>
+  </g>
+  <!-- tallos -->
+  <path d="M108 150 C108 135 106 120 110 110 C114 120 112 135 112 150" stroke="#2E6A2E" stroke-width="3" stroke-linecap="round"></path>
+  <path d="M116 150 C116 135 118 120 110 110 C102 120 104 135 104 150" stroke="#2E6A2E" stroke-width="3" stroke-linecap="round"></path>
+  <!-- ramillete -->
+  <g fill="#FFFFFF">
+    <circle cx="96" cy="100" r="6"></circle>
+    <circle cx="106" cy="98" r="5"></circle>
+    <circle cx="116" cy="100" r="6"></circle>
+    <circle cx="126" cy="103" r="5"></circle>
+    <circle cx="109" cy="107" r="6"></circle>
+    <circle cx="120" cy="112" r="5"></circle>
+    <circle cx="100" cy="112" r="5"></circle>
+  </g>
+  <defs>
+    <filter id="s" x="0" y="0" width="220" height="220" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6"></feGaussianBlur>
+    </filter>
+  </defs>
+</svg>

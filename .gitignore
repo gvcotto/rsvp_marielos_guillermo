@@ -1,0 +1,16 @@
+@"
+node_modules/
+.next/
+dist/
+out/
+.vercel/
+.env
+.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+*.local
+"@
+| Set-Content -Encoding UTF8 .gitignore
