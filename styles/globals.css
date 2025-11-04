@@ -1397,7 +1397,7 @@ body{ background:#ffffff; }
 .info-card__face--back{
   transform:rotateY(180deg);
   align-items:center;
-  justify-content:flex-start;
+  justify-content:center;
   text-align:center;
   padding-bottom:56px;
 }
