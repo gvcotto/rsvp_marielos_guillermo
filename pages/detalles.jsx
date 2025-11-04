@@ -153,7 +153,8 @@ const INFO_CARDS = [
       "Desde el cariño y el respeto, esta celebración será exclusiva para adultos.",
       "Agradecemos tu comprensión y cariño.",
     ],
-  },
+    textVariant: "large",
+},
   {
     id: "gift",
     title: "Lluvia de sobres",
@@ -163,7 +164,8 @@ const INFO_CARDS = [
       "",
       "Si deseas hacernos un obsequio, agradeceríamos que sea en forma de sobre. Tendremos un lugar especial disponible durante el evento.",
     ],
-  },
+    textVariant: "large",
+},
 {
   id: "template-hospedaje",
   title: "Hospedaje",
@@ -174,6 +176,7 @@ const INFO_CARDS = [
     "• Casa Noble Hotel – Habitaciones sencillas y agradables.",
     "• Hostal Antigüeño – Opción básica con desayuno incluido.",
   ],
+    textVariant: "large",
 },
   {
     id: "template-2",
@@ -182,7 +185,8 @@ const INFO_CARDS = [
       "", 
       "El costo preferencial para nuestros invitados es de Q.50 por vehículo (tarifa única, válida por toda la celebración).",
     ],
-  },
+    textVariant: "large",
+},
   {
     id: "template-3",
     title: "Fotos & Recuerdos",
@@ -194,7 +198,8 @@ const INFO_CARDS = [
     "Con cariño,",
     "Marielos & Guillermo"
     ],
-  },
+    textVariant: "large",
+},
 ];
 
 export default function DetallesPage() {
@@ -799,9 +804,10 @@ function PlaceCard({ icon, title, time, location, link }) {
   );
 }
 
-function InfoCard({ title, description, icon, subtitle, palette }) {
+function InfoCard({ title, description, icon, subtitle, palette, textVariant }) {
   const [isFlipped, setIsFlipped] = useState(false);
   const safeDescription = Array.isArray(description) ? description : [description].filter(Boolean);
+  const textClassName = `info-card__text${textVariant === "large" ? " info-card__text--large" : ""}`;
 
   const toggleFlip = () => setIsFlipped((prev) => !prev);
   const handleKeyDown = (event) => {
@@ -845,7 +851,7 @@ function InfoCard({ title, description, icon, subtitle, palette }) {
           )}
           <div className="info-card__body">
             {safeDescription.map((paragraph, index) => (
-              <p key={index} className="info-card__text">
+              <p key={index} className={textClassName}>
                 {paragraph}
               </p>
             ))}

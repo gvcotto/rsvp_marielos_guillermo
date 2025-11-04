@@ -1440,6 +1440,15 @@ body{ background:#ffffff; }
   max-width:260px;
   text-align:center;
 }
+.info-card__text--large{
+  font-size: clamp(0.95rem, 0.88rem + 0.7vw, 1.12rem);
+  max-width:320px;
+}
+@media (max-width: 640px){
+  .info-card__text--large{
+    max-width:100%;
+  }
+}
 .info-card__palette{
   margin-top:0px;
   width:200%;
