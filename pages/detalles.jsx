@@ -166,18 +166,17 @@ const INFO_CARDS = [
     ],
     textVariant: "large",
 },
-{
-  id: "template-hospedaje",
-  title: "Hospedaje",
-  description: [
-    "Si deseas pasar la noche en Antigua después del evento, te recomendamos reservar con anticipación (27 de diciembre es temporada alta).",
+  {
+    id: "template-hospedaje",
+    title: "Hospedaje",
+    description: [
+      "Si deseas pasar la noche en Antigua después del evento, te recomendamos reservar con anticipación (27 de diciembre es temporada alta).",
     "• Hotel Mesón de María – Colonial y accesible.",
     "• La Villa Serena – Tranquilo y con buen precio.",
     "• Casa Noble Hotel – Habitaciones sencillas y agradables.",
-    "• Hostal Antigüeño – Opción básica con desayuno incluido.",
-  ],
-    textVariant: "large",
-},
+      "• Hostal Antigüeño - Opción básica con desayuno incluido.",
+    ],
+  },
   {
     id: "template-2",
     title: "Parqueo",
