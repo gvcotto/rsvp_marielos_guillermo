@@ -1397,7 +1397,7 @@ body{ background:#ffffff; }
 .info-card__face--back{
   transform:rotateY(180deg);
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
   text-align:center;
   padding-bottom:56px;
 }
@@ -1431,6 +1431,8 @@ body{ background:#ffffff; }
   width:100%;
   align-items:center;
   margin-bottom:12px;
+  flex:1;
+  justify-content:center;
 }
 .info-card__text{
   font-family:'Libre Baskerville','Playfair Display',serif;
