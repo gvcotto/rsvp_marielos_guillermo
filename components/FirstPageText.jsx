@@ -119,7 +119,6 @@ export default function FirstPageText() {
         <span className="h-font gold-gradient guest-name-normal">
           {displayName?.trim() || "Invitado/a"}
         </span>
-        <span className="cover-touch-hint gold-gradient">Toca para abrir</span>
       </div>
 
       <section className="cover-reserve">
