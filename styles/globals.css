@@ -1505,3 +1505,9 @@ body{ background:#ffffff; }
   display:block;
   object-fit:cover;
 }
+
+
+.info-card__text--highlight{
+  font-weight:600;
+  font-size:clamp(0.78rem, 0.72rem + 0.22vw, 0.9rem);
+}

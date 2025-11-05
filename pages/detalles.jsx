@@ -141,7 +141,7 @@ const INFO_CARDS = [
     subtitle: "Elegante",
     title: "Código de vestimenta",
     description: [
-      { text: "Por favor evita prendas en blanco, dorado, rose gold, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.", emphasis: true },
+      { text: "Por favor evita prendas en blanco, dorado, rose gold, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.", emphasis: "highlight" },
       "La celebración será en jardín al aire libre. Como en Antigua las noches suelen ser frías, te sugerimos llevar abrigo o pashmina.",
     ],
     palette: ["#0B2230", "#2F3E35", "#4A4F54", "#3A2344", "#3B2A20"],
@@ -852,9 +852,13 @@ function InfoCard({ title, description, icon, subtitle, palette, textVariant }) 
             {safeDescription.map((entry, index) => {
               if (entry && typeof entry === "object" && !Array.isArray(entry)) {
                 const content = entry.text ?? "";
+                const highlight = entry.emphasis === "highlight";
                 return (
-                  <p key={index} className={textClassName}>
-                    {entry.emphasis ? <strong>{content}</strong> : content}
+                  <p
+                    key={index}
+                    className={`${textClassName}${highlight ? " info-card__text--highlight" : ""}`}
+                  >
+                    {content}
                   </p>
                 );
               }
