@@ -342,6 +342,12 @@ export default function RSVPInline({
         (member) => member.answer === "Sí"
       ).length;
 
+      const notePayload = {
+        members: sheetMembers,
+        extras: extrasFilled,
+        comment: cleanedNote || "",
+      };
+
       let payload;
       let extrasForSummary = extrasFilled;
 
@@ -351,11 +357,7 @@ export default function RSVPInline({
           name: (fallbackName || sheetMembers[0]?.name || "Invitado/a").trim(),
           answer: "grupo",
           guests: confirmedCount + extrasCount,
-          note: JSON.stringify({
-            members: sheetMembers,
-            extras: extrasFilled,
-            comment: cleanedNote || "",
-          }),
+          note: JSON.stringify(notePayload),
           receivedAt: now,
         };
       } else {
@@ -366,10 +368,9 @@ export default function RSVPInline({
           name: member?.name || (fallbackName || "Invitado/a").trim(),
           answer: member?.answer || "",
           guests: baseGuest + extrasCount,
-          note: cleanedNote || "",
+          note: JSON.stringify(notePayload),
           receivedAt: now,
         };
-        extrasForSummary = extrasFilled;
       }
 
       const entryHash = await generateEntryHash({

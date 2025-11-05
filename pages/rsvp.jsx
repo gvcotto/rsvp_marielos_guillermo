@@ -306,16 +306,18 @@ export default function RSVP() {
           timestamp: now,
         });
 
+        const notePayload = {
+          members: normalizedMembers,
+          extras: extrasFilled,
+          comment: trimmedNote || "",
+        };
+
         rows.push({
           token: p || null,
           name: displayName.trim(),
           answer: "grupo",
           guests: confirmedCount + extrasFilled.length,
-          note: JSON.stringify({
-            members: normalizedMembers,
-            extras: extrasFilled,
-            comment: trimmedNote || null,
-          }),
+          note: JSON.stringify(notePayload),
           receivedAt: now,
           entryHash,
         });
@@ -343,12 +345,18 @@ export default function RSVP() {
           members: normalizedMembers,
           timestamp: now,
         });
+        const notePayload = {
+          members: normalizedMembers,
+          extras: [],
+          comment: trimmedNote || "",
+        };
+
         rows.push({
           token: p || null,
           name: displayName.trim(),
           answer,
           guests,
-          note: trimmedNote,
+          note: JSON.stringify(notePayload),
           receivedAt: now,
           entryHash,
         });
