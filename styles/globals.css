@@ -994,6 +994,14 @@ html,body{ padding:0; margin:0; background:var(--bg); color:var(--ink); }
 .main-centerpiece:hover{ transform: scale(1.02); }
 .cover-label{ display:block; font-size: clamp(13px,1.3vw,16px); letter-spacing:.22em; text-transform:uppercase; margin-bottom:6px; }
 .cover-guest{ margin-top: clamp(20px,5vw,34px); text-align:center; }
+.cover-touch-hint{
+  display:block;
+  margin-top:8px;
+  font-size:clamp(12px, 0.9vw, 14px);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  opacity:.85;
+}
 .cover-reserve .reserve-card-canvas{
   border:none;
   box-shadow:0 24px 60px rgba(0,0,0,.14);

@@ -141,7 +141,7 @@ const INFO_CARDS = [
     subtitle: "Elegante",
     title: "Código de vestimenta",
     description: [
-      "Por favor evita prendas en blanco, dorado, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.",
+      "<strong>Por favor evita prendas en blanco, dorado, rose gold, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.</strong>",
       "La celebración será en jardín al aire libre. Como en Antigua las noches suelen ser frías, te sugerimos llevar abrigo o pashmina.",
     ],
     palette: ["#0B2230", "#2F3E35", "#4A4F54", "#3A2344", "#3B2A20"],
@@ -890,3 +890,4 @@ function HeartIcon() {
     </svg>
   );
 }
+

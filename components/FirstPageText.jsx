@@ -1,4 +1,4 @@
-﻿import Image from "next/image";
+ï»¿import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -35,7 +35,7 @@ export default function FirstPageText() {
           setDisplayName(urlName || sheetName || "Invitado/a");
         }
       } catch (err) {
-        console.error("No se pudo cargar la invitación", err);
+        console.error("No se pudo cargar la invitaciÃ³n", err);
       }
     }
 
@@ -99,11 +99,11 @@ export default function FirstPageText() {
           type="button"
           className={`centerpiece-button ${opening ? "opening" : ""}`}
           onClick={handleOpen}
-          aria-label="Abrir invitación"
+          aria-label="Abrir invitaciÃ³n"
         >
           <Image
             src="/canva/centerpiece.png"
-            alt="Sobre de invitación"
+            alt="Sobre de invitaciÃ³n"
             className="centerpiece main-centerpiece"
             draggable={false}
             width={560}
@@ -114,10 +114,11 @@ export default function FirstPageText() {
       </section>
 
       <div className="cover-guest">
-        <span className="h-font gold-gradient cover-label">Tu invitación</span>
+        <span className="h-font gold-gradient cover-label">Tu invitaciÃ³n</span>
         <span className="h-font gold-gradient guest-name-normal">
           {displayName?.trim() || "Invitado/a"}
         </span>
+        <span className="cover-touch-hint gold-gradient">Toca para abrir</span>
       </div>
 
       <section className="cover-reserve">
