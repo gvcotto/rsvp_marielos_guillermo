@@ -141,7 +141,7 @@ const INFO_CARDS = [
     subtitle: "Elegante",
     title: "Código de vestimenta",
     description: [
-      "<strong>Por favor evita prendas en blanco, dorado, rose gold, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.</strong>",
+      { text: "Por favor evita prendas en blanco, dorado, rose gold, corinto o tonos muy similares. Toma de referencia la paleta de más abajo.", emphasis: true },
       "La celebración será en jardín al aire libre. Como en Antigua las noches suelen ser frías, te sugerimos llevar abrigo o pashmina.",
     ],
     palette: ["#0B2230", "#2F3E35", "#4A4F54", "#3A2344", "#3B2A20"],
@@ -849,11 +849,21 @@ function InfoCard({ title, description, icon, subtitle, palette, textVariant }) 
             </>
           )}
           <div className="info-card__body">
-            {safeDescription.map((paragraph, index) => (
-              <p key={index} className={textClassName}>
-                {paragraph}
-              </p>
-            ))}
+            {safeDescription.map((entry, index) => {
+              if (entry && typeof entry === "object" && !Array.isArray(entry)) {
+                const content = entry.text ?? "";
+                return (
+                  <p key={index} className={textClassName}>
+                    {entry.emphasis ? <strong>{content}</strong> : content}
+                  </p>
+                );
+              }
+              return (
+                <p key={index} className={textClassName}>
+                  {entry}
+                </p>
+              );
+            })}
           </div>
           {Array.isArray(palette) && palette.length > 0 && (
             <div className="info-card__palette" aria-label="Colores sugeridos">
