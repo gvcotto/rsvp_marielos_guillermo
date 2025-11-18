@@ -3,6 +3,7 @@ import jsPDF from "jspdf";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { getDeadlineConfig } from "@/lib/rsvpDeadline";
 
 import CalendarBadge from "@/components/CalendarBadge";
 import Countdown from "@/components/Countdown";
@@ -204,6 +205,7 @@ const INFO_CARDS = [
 export default function DetallesPage() {
   const router = useRouter();
   const { p, n } = router.query;
+  const deadline = useMemo(() => getDeadlineConfig(p), [p]);
 
   const [displayName, setDisplayName] = useState(
     n ? decodeURIComponent(n) : ""
@@ -700,7 +702,7 @@ export default function DetallesPage() {
                   Invitación para <b>{displayName || "Invitado/a"}</b>. Lugares reservados: <b>{seats}</b>
                 </p>
                 <p className="sec-text mb-6">
-                  Agradecemos confirmar tu asistencia a más tardar el <b>15 de Noviembre de 2025</b>, para preparar con cariño cada detalle para ti y tus acompañantes.
+                  Agradecemos confirmar tu asistencia a más tardar el <b>{deadline.label}</b>, para preparar con cariño cada detalle para ti y tus acompañantes.
                 </p>
               </>
             )}
@@ -904,6 +906,4 @@ function HeartIcon() {
     </svg>
   );
 }
-
-
 

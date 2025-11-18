@@ -1,14 +1,11 @@
 ﻿import { useEffect, useMemo, useState } from "react";
+import { getDeadlineConfig } from "@/lib/rsvpDeadline";
 
 const ANSWER_YES_VALUE = "yes";
 const ANSWER_NO_VALUE = "no";
 const ANSWER_YES_LABEL = "Sí";
 const ANSWER_NO_LABEL = "No";
 const EVENT_ID = "boda-marielos-guillermo-2025";
-const RSVP_DEADLINE_TS = Date.parse("2025-11-16T06:00:00Z");
-const RSVP_DEADLINE_LABEL = "15 de noviembre de 2025";
-
-const isDeadlinePassed = () => Date.now() >= RSVP_DEADLINE_TS;
 
 const normalizeAnswer = (value) => {
   if (value == null) return "";
@@ -141,7 +138,10 @@ export default function RSVPInline({
   );
   const [ok, setOk] = useState(Boolean(initialStatus));
   const [error, setError] = useState("");
-  const [deadlinePassed, setDeadlinePassed] = useState(() => isDeadlinePassed());
+  const deadline = useMemo(() => getDeadlineConfig(token), [token]);
+  const [deadlinePassed, setDeadlinePassed] = useState(
+    () => Date.now() >= deadline.ts
+  );
   const [existingStatus, setExistingStatus] = useState(initialStatus);
 
   useEffect(() => {
@@ -271,15 +271,19 @@ export default function RSVPInline({
   }, [initialStatus]);
 
   useEffect(() => {
+    setDeadlinePassed(Date.now() >= deadline.ts);
+  }, [deadline.ts]);
+
+  useEffect(() => {
     if (deadlinePassed || existingStatus) return;
     const id = window.setInterval(() => {
-      if (isDeadlinePassed()) {
+      if (Date.now() >= deadline.ts) {
         setDeadlinePassed(true);
         window.clearInterval(id);
       }
     }, 60000);
     return () => window.clearInterval(id);
-  }, [deadlinePassed, existingStatus]);
+  }, [deadlinePassed, existingStatus, deadline.ts]);
 
   const allSelected = useMemo(() => {
     if (!members.length) return false;
@@ -297,7 +301,7 @@ export default function RSVPInline({
     }
 
     if (deadlinePassed) {
-      setError(`Cerramos confirmaciones el ${RSVP_DEADLINE_LABEL}.`);
+      setError(`Cerramos confirmaciones el ${deadline.label}.`);
       return;
     }
 
@@ -493,7 +497,7 @@ export default function RSVPInline({
       <div className="card" style={{ textAlign: "center" }}>
         <div className="sec-title">RSVP cerrado</div>
         <div className="sec-text">
-          Cerramos confirmaciones el {RSVP_DEADLINE_LABEL}. Si necesitas comunicar algo,
+          Cerramos confirmaciones el {deadline.label}. Si necesitas comunicar algo,
           contáctanos directamente para apoyarte.
         </div>
       </div>
@@ -597,4 +601,3 @@ export default function RSVPInline({
     </div>
   );
 }
-
